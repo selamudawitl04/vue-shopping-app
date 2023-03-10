@@ -1,5 +1,6 @@
 <template>
     <div>
+        
         <h2>Your Cart</h2>
         <p class="total-amount">Total Amount: <span>${{ totalAmount }}</span></p>
         <ul>
@@ -14,20 +15,23 @@
 <script>
 import { mapGetters } from "vuex";
 import CartList from "@/components/cart-resources/CartList.vue";
+// import DialogView from "@/components/layout/DialogView.vue";
 export default{
     data(){
         return{
-            // totalsAmount:0
+           
         }
     },
     components:{
         CartList
+        
     },
     computed:{
         ...mapGetters({
             getProduct:'getProduct',
             getCarts: 'getCarts',
-            totalAmount: 'getTotalAmount'
+            totalAmount: 'getTotalAmount',
+            
         })
     }
 }

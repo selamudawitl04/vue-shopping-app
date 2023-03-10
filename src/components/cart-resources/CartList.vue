@@ -1,4 +1,10 @@
 <template>
+    <dialog-view 
+            type="cart" 
+            v-if="cartAlert"
+            :message="message"
+            :title="title">
+    </dialog-view>
     <div class="cart-container">
         <img src="../../assets/tour-7-cover.jpg" alt="product image">
         <p class="product-name">{{$store.getters.getProduct(cart.productId).name}}</p>
@@ -12,16 +18,29 @@
 </template>
 <script>
 
+import DialogView from '../layout/DialogView.vue';
+
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 export default{
     props:['cart'],
+    components:{
+        DialogView
+    },
+    data(){
+        return{
+            title: `${this.getProduct(this.cart.productId).name} is Removed from Cart`,
+            message: `${this.getProduct(this.cart.productId).name} 
+            Price: $${this.getProduct(this.cart.productId).price} Qunatity: ${this.cart.quantity}`,
+        }
+    },
     computed:{
         totalPrice(){
             return Math.round( this.getProduct(this.cart.productId).price * this.cart.quantity)
         },
         ...mapGetters({
             getProduct: 'getProduct',
+            cartAlert: 'getCartAlert'
         })
     },
     methods:{

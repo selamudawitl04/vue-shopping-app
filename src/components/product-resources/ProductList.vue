@@ -1,4 +1,10 @@
 <template>
+    <dialog-view 
+        type="product" 
+        v-if="$store.getters.getProductAlert"
+        :message="message"
+        :title="title">
+    </dialog-view>
     <div class="card-container">
        <div class="product-body">
             <img src="../../assets/tour-7-cover.jpg" alt="product image">
@@ -12,14 +18,25 @@
     </div>
 </template>
 <script>
+import DialogView from '../layout/DialogView.vue';
 import { mapActions } from 'vuex';
 export default{
     props: ['product'],
+    data(){
+        return {
+            title: `${this.product.name} is Added to Cart`,
+            message: `${this.product.name} Price: $${this.product.price} Qunatity: 5`,
+        }
+    },
+    components:{
+        DialogView
+    },
     methods:{
         ...mapActions({
             addToCart: 'addToCart'
         })
     }
+
 }</script>
 <style scoped>
 .card-container{

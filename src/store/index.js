@@ -12,6 +12,7 @@ export default createStore({
     },
     state(){
         return{
+            
         }
     },
     mutations: mutations,

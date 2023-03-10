@@ -17,7 +17,9 @@ export default{
                     productId: 3,
                     quantity: 2
                 }
-            ]
+            ],
+            cartAlert:false,
+            productAlert: false
         }
     },
     mutations: mutations,

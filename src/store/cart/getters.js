@@ -14,5 +14,11 @@ export default{
     },
     cartLength(state){
         return state.carts.length
+    },
+    getCartAlert(state){
+        return state.cartAlert
+    },
+    getProductAlert(state){
+        return state.productAlert
     }
 }
